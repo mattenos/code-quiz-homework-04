@@ -7,25 +7,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/style.css">
-    <title>Coding Quiz!</title>
+    <title>Coding JavaScript Quiz!</title>
 
-<body class="test bg-dark text-light">
+<body class="bg-dark text-light">
     <div class="score"><a href="scores.html">View Highscores</a></div>
-    <div class='timer'>Time: <span id='startTime'>0</span></div>
+
+    <div class='timer'>Time: <span id='start-time'></span></div>
     <section class="class-wrap">
         <div class="intro" id='start'>
-            <h2>Welcome to our Coding Quiz!</h2>
+            <h2>Welcome to our JavaScript Quiz!</h2>
             <p>You will have two minutes to answer all of the questions. If you get a question incorrect, you will have
                 five seconds deducted from your remaining time. Press "Let's Start"
                 to begin.
             </p>
-            <button class="startQuiz">Let's Start!</button>
+            <button id='start-button'>Let's Start!</button>
         </div>
-        <div>Questions</div>
-        <div>End of Quiz</div>
+
+        <div class='hide' id='questions'>
+            <h2 id='question-title'></h2>
+            <div id='choices' class='choices'></div>
+        </div>
+
+        <div class='hide' id='end-screen'>
+            <h2>Quiz Complete!</h2>
+            <p>Your final score is <span id='final-score'></span></p>
+            <p>Enter your intials: <input type='text' id='intials' max='3' />
+                <button id='submit'>Submit</button>
+            </p>
+        </div>
     </section>
     </div>
+    <script src="./assets/questions.js"></script>
+    <script src="./assets/script.js"></script>
 </body>
-<script src="./assets/script.js"></script>
 
 </html>

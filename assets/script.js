@@ -1,24 +1,84 @@
-var startingTime = 1;
-let time = questions.length * 
+var startBtn = document.getElementById('start-button');
+var timerEl = document.getElementById('start-time');
+var questionsEl = document.getElementById('questions');
+var timerId;
+var time = questions.length * 15;
+var questionsIndex = 0;
+var choicesEl = document.getElementById('choices');
+var submitEl = document.getElementById('submit');
 
-var countdownEl = document.getElementById('countdown');
+function startQuiz() {
+  var introEl = document.getElementById('start');
+  introEl.setAttribute('class', 'hide');
 
-setInterval(updateCountdown, 1000);
+  questionsEl.removeAttribute('class');
 
-function updateCountdown() {
-    var minutes = Math.floor(time / 60);
-    let seconds = time % 60;
+  timerId = setInterval(countdown, 1000);
+  timerEl.textContent = time;
 
-    seconds = seconds < 10 ? '0' + seconds : seconds;
-    
-    countdownEl.innerHTML = `${seconds}`;
-    time--;
+  getQuestions();
+};
+
+function getQuestions() {
+  var currentQue = questions[questionsIndex];
+  var quesEL = document.getElementById('question-title')
+  quesEL.textContent = currentQue.question;
+
+  choicesEl.innerHTML = '';
+
+  currentQue.choices.forEach(function (choice, i) {
+    var choiceBtn = document.createElement('button');
+    choiceBtn.setAttribute('class', 'choice');
+    choiceBtn.setAttribute('value', choice);
+    choiceBtn.textContent = i + 1 + '.' + choice;
+    choiceBtn.onclick = clickChoice;
+    choicesEl.appendChild(choiceBtn);
+  });
 }
 
-const startButton = document.querySelector('startQuiz');
+function clickChoice() {
+  if (this.value !== questions[questionsIndex].answer) {
+    time -= 5;
+  }
+  if (time < 0) {
+    time = 0;
+  }
+  timerEl.textContent = time;
 
-function();                                      
+  questionsIndex++;
 
-var introEl = document.getElementById('start');
+  if (questionsIndex === questions.length) {
+    endQuiz();
+  }
+  else {
+    getQuestions();
+  }
+}
 
-introEl.setAttribute('class', 'hide');
+function endQuiz() {
+  clearInterval(timerId);
+  var endscreenEl = document.getElementById('end-screen');
+  endscreenEl.removeAttribute('class');
+  var scoreEl = document.getElementById('final-score');
+  scoreEl.textContent = time;
+  questionsEl.setAttribute('class', 'hide');
+}
+
+
+function countdown() {
+  time--;
+  timerEl.textContent = time;
+  if (time <= 0) {
+    endQuiz();
+  }
+}
+
+function displayMessage(event) {
+if (event.key = 'Enter') {
+  saveScore();
+}
+}
+
+startBtn.addEventListener('click', startQuiz);
+submitEl.addEventListener
+
