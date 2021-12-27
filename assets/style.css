@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Roboto+Mono&family=Roboto:wght@300&family=Source+Code+Pro&display=swap');
 
-.timer {
+/* .timer {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -10,6 +10,11 @@
     position: absolute;
     top: 10px;
     left: 10px;
+} */
+
+.test {
+    display: flex;
+    justify-content: space-between;
 }
 
 .class-wrap {
