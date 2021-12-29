@@ -5,7 +5,7 @@ var timerId;
 var time = questions.length * 15;
 var questionsIndex = 0;
 var choicesEl = document.getElementById('choices');
-var submitEl = document.getElementById('submit');
+
 
 function startQuiz() {
   var introEl = document.getElementById('start');
@@ -80,5 +80,3 @@ if (event.key = 'Enter') {
 }
 
 startBtn.addEventListener('click', startQuiz);
-submitEl.addEventListener
-
