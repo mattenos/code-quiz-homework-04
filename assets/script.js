@@ -5,6 +5,8 @@ var timerId;
 var time = questions.length * 15;
 var questionsIndex = 0;
 var choicesEl = document.getElementById('choices');
+var score;
+
 
 
 function startQuiz() {
@@ -62,21 +64,21 @@ function endQuiz() {
   var scoreEl = document.getElementById('final-score');
   scoreEl.textContent = time;
   questionsEl.setAttribute('class', 'hide');
+
+  saveScore();
 }
 
 
 function countdown() {
   time--;
   timerEl.textContent = time;
-  if (time <= 0) {
+  if (time == 0) {
     endQuiz();
   }
 }
 
-function displayMessage(event) {
-if (event.key = 'Enter') {
-  saveScore();
-}
+function saveScore() {
+  score = time;
 }
 
 startBtn.addEventListener('click', startQuiz);
