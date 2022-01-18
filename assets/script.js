@@ -6,7 +6,8 @@ var time = questions.length * 15;
 var questionsIndex = 0;
 var choicesEl = document.getElementById('choices');
 var score;
-
+var intialsInput = document.getElementById('initials');
+var submitBtn = document.getElementById('submit');
 
 
 function startQuiz() {
@@ -78,7 +79,23 @@ function countdown() {
 }
 
 function saveScore() {
-  score = time;
+  var initials = intialsInput.value.trim();
+
+  if (initials !== '') {
+    var highscores = JSON.parse(localStorage.getItem('highscores')) || [];
+  }
+
+  var newScore = {
+    score: time,
+    initials: initials
+  };
+
+  highscores.push(newScore);
+  localStorage.setItem('highscores', JSON.stringify(highscores));
+
+  location.href = 'scores.html';
 }
+
+submitBtn.addEventListener('click', saveScore);
 
 startBtn.addEventListener('click', startQuiz);
