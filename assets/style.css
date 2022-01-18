@@ -31,3 +31,11 @@
     background-color: #06aed5;
     color: white;
 }
+
+.btn {
+    font-size: 14pt;
+    border-left: 1px solid black;
+    border-radius: 15px;
+    background-color: #06aed5;
+    color: white;
+}
